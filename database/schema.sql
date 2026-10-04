@@ -80,7 +80,7 @@ INSERT INTO admins (username, password_hash, name) VALUES
 
 -- Demo customer login: user / user12345
 INSERT INTO users (full_name, username, email, phone, password_hash) VALUES
-('Demo User', 'user', 'user@nexanet.local', '081234567890', 'scrypt$nexanet-demo-user-2026$454f68c1c12b4aeeb39d5dafe740ca211d5ff26679cc2d1997a73277d56b39052a1380eb27629debdb27a3b427013252132377315b409fbba1b68775679a0743')
+('Demo User', 'user', 'user@nexanet.local', '081234567890', 'scrypt$nexanet-demo-user-2026$454f68c1c12b4aeeb39d5dafe740ca211d5ff26679cc2d1997a73277d56b39052a1380eb27629debdb27a3b427013252132377315b409fbba1b68775679a0743');
 
 INSERT INTO rates (name, hourly_price, description, active) VALUES
 ('Regular', 7000, 'PC standar untuk browsing dan gaming ringan.', 1),
