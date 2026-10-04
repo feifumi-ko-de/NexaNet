@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+<section class="hero">
+  <div>
+    <p class="eyebrow">WARNET RESERVATION SYSTEM</p>
+    <h1>Pesan PC dulu.<br><span>Datang, bayar cash, langsung main.</span></h1>
+    <p class="hero-copy">NexaNet membantu pelanggan menghindari antrean dengan reservasi slot PC secara online. Pembayaran tetap dilakukan secara tunai saat datang ke warnet.</p>
+    <div class="actions"><a class="btn primary" href="/reservasi">Buat Reservasi</a><a class="btn secondary" href="/cek-reservasi">Cek Booking</a></div>
+  </div>
+  <div class="hero-card"><div class="hero-chip">FLOW</div><div class="flow-line"><span>01</span> Pilih PC</div><div class="flow-line"><span>02</span> Pilih waktu</div><div class="flow-line"><span>03</span> Dapat kode booking</div><div class="flow-line"><span>04</span> Bayar cash di warnet</div></div>
+</section>
+
+<section class="section">
+  <div class="card">
+    <% if (user) { %>
+      <p class="eyebrow">AKUN</p>
+      <h2>Halo, <%= user.full_name %></h2>
+      <p class="muted">Kamu sudah masuk sebagai <strong><%= user.username %></strong>. Data reservasi berikutnya dapat mengisi identitasmu otomatis.</p>
+    <% } else { %>
+      <p class="eyebrow">LEBIH PRAKTIS</p>
+      <h2>Sudah punya akun NexaNet?</h2>
+      <p class="muted">Masuk atau daftar agar identitas reservasi tersimpan dan tidak perlu diketik ulang setiap kali booking.</p>
+      <div class="actions"><a class="btn primary" href="/akun/register">Buat Akun</a><a class="btn secondary" href="/akun/login">Masuk</a></div>
+    <% } %>
+  </div>
+</section>
+<section class="section"><div class="section-head"><div><p class="eyebrow">PILIHAN PC</p><h2>PC yang tersedia</h2></div><span class="muted"><%= pcs.filter(p => p.status === 'AVAILABLE').length %> PC tersedia</span></div>
+  <div class="card-grid">
+    <% pcs.forEach(pc => { %>
+      <article class="card pc-card <%= pc.status !== 'AVAILABLE' ? 'disabled' : '' %>"><div class="status <%= pc.status.toLowerCase() %>"><%= pc.status %></div><h3><%= pc.code %></h3><p><%= pc.name %></p><div class="price"><%= currency(pc.hourly_price) %><small>/jam</small></div><div class="muted small"><%= pc.rate_name %></div></article>
+    <% }) %>
+  </div>
+</section>
+<section class="section two-col"><div><p class="eyebrow">KENAPA RESERVASI?</p><h2>Lebih pasti, lebih gampang.</h2><p class="muted">Pelanggan dapat mengunci jadwal sebelum berangkat. Admin mendapatkan data booking yang rapi, sementara pembayaran tetap sederhana: cash di lokasi.</p></div><div class="mini-grid"><div class="mini"><b>01</b><span>Booking code otomatis</span></div><div class="mini"><b>02</b><span>Cek bentrok jadwal</span></div><div class="mini"><b>03</b><span>Harga otomatis</span></div><div class="mini"><b>04</b><span>CRUD admin</span></div></div></section>
+<%- include('partials/footer') %>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="/">NEXA<span>NET</span></a>
+    <nav>
+      <a href="/">Beranda</a>
+      <a href="/reservasi">Reservasi</a>
+      <a href="/cek-reservasi">Cek Booking</a>
+      <% if (user) { %>
+        <span class="user-greeting">Halo, <strong><%= user.full_name.split(' ')[0] %></strong></span>
+        <form method="POST" action="/akun/logout" class="inline-nav-form"><button class="nav-cta link-btn-nav" type="submit">Keluar</button></form>
+      <% } else { %>
+        <a href="/akun/login">Masuk</a>
+        <a class="nav-cta" href="/akun/register">Daftar</a>
+      <% } %>
+      <a class="admin-link" href="/admin/login">Admin</a>
+    </nav>
+  </div>
+</header>
+<main class="container main-content">

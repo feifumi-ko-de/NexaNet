@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title><link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<main class="login-page">
+  <form class="login-card" method="POST" action="/akun/login">
+    <div class="brand center">NEXA<span>NET</span></div>
+    <p class="eyebrow">AKUN PELANGGAN</p>
+    <h1>Masuk</h1>
+    <p class="muted small">Masuk untuk menyimpan identitas akunmu dan mempermudah proses reservasi.</p>
+    <% if(error){ %><div class="alert error"><%= error %></div><% } %>
+    <label>Username<input name="username" value="<%= form?.username || '' %>" autocomplete="username" required></label>
+    <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+    <button class="btn primary wide" type="submit">Masuk</button>
+    <p class="center muted small">Belum punya akun? <a class="accent-link" href="/akun/register">Daftar sekarang</a></p>
+    <a href="/" class="center muted small">Kembali ke situs</a>
+  </form>
+</main>
+</body>
+</html>
